@@ -145,21 +145,6 @@ static int vocab_lookup(vocab_entry *table, const char *word) {
  * Matrix Operations
  * ======================================================================== */
 
-/* Matrix multiplication: C = A @ B
- * A: [M, K], B: [K, N], C: [M, N]
- */
-static void matmul(float *C, const float *A, const float *B, int M, int K, int N) {
-    for (int i = 0; i < M; i++) {
-        for (int j = 0; j < N; j++) {
-            float sum = 0.0f;
-            for (int k = 0; k < K; k++) {
-                sum += A[i * K + k] * B[k * N + j];
-            }
-            C[i * N + j] = sum;
-        }
-    }
-}
-
 /* Matrix-vector multiplication with bias: y = x @ W^T + b
  * x: [seq_len, in_dim], W: [out_dim, in_dim], b: [out_dim], y: [seq_len, out_dim]
  * Note: Weight matrices in BERT are stored as [out_dim, in_dim]
@@ -251,18 +236,6 @@ static void l2_normalize(float *x, int n) {
             x[i] *= inv_norm;
         }
     }
-}
-
-/* Add two vectors: out = a + b */
-static void vec_add(float *out, const float *a, const float *b, int n) {
-    for (int i = 0; i < n; i++) {
-        out[i] = a[i] + b[i];
-    }
-}
-
-/* Copy vector */
-static void vec_copy(float *dst, const float *src, int n) {
-    memcpy(dst, src, n * sizeof(float));
 }
 
 /* ========================================================================
