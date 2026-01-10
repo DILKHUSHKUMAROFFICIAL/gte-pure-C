@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -O2 -Wall -Wextra
+CFLAGS = -O3 -march=native -ffast-math -Wall -Wextra
 LDFLAGS = -lm
 
 all: test_gte
@@ -11,6 +11,6 @@ gte-small.gtemodel: offline/local_complete_model/model.safetensors
 	python3 convert_model.py offline/local_complete_model $@
 
 clean:
-	rm -f test_gte gte-small.gtemodel
+	rm -f test_gte bench gte-small.gtemodel
 
 .PHONY: all clean
