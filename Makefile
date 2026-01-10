@@ -11,6 +11,9 @@ gte-small.gtemodel: offline/local_complete_model/model.safetensors
 	python3 convert_model.py offline/local_complete_model $@
 
 clean:
-	rm -f test_gte bench gte-small.gtemodel
+	rm -f test_gte bench
+
+distclean: clean
+	rm -f gte-small.gtemodel
 
 .PHONY: all clean
