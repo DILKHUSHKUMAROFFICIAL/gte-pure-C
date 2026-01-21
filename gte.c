@@ -165,12 +165,10 @@ static void linear(float *y, const float *x, const float *W, const float *b,
                 seq_len, out_dim, in_dim,
                 1.0f, x, in_dim, W, in_dim,
                 0.0f, y, out_dim);
-    /* Add bias */
+    /* Add bias: y[s,:] += b for each row using BLAS saxpy */
     if (b) {
         for (int s = 0; s < seq_len; s++) {
-            for (int o = 0; o < out_dim; o++) {
-                y[s * out_dim + o] += b[o];
-            }
+            cblas_saxpy(out_dim, 1.0f, b, 1, y + s * out_dim, 1);
         }
     }
 #else
@@ -516,9 +514,13 @@ static void self_attention(gte_ctx *ctx, layer_weights *layer, int seq_len, cons
            seq_len, hidden, hidden);
 
     /* Residual connection and layer norm */
+#ifdef USE_BLAS
+    cblas_saxpy(seq_len * hidden, 1.0f, ctx->hidden_states, 1, ctx->temp_hidden, 1);
+#else
     for (int i = 0; i < seq_len * hidden; i++) {
         ctx->temp_hidden[i] += ctx->hidden_states[i];
     }
+#endif
     layer_norm(ctx->hidden_states, ctx->temp_hidden, layer->attn_ln_weight, layer->attn_ln_bias,
                seq_len, hidden);
 }
@@ -538,9 +540,13 @@ static void feed_forward(gte_ctx *ctx, layer_weights *layer, int seq_len) {
            seq_len, inter, hidden);
 
     /* Residual connection and layer norm */
+#ifdef USE_BLAS
+    cblas_saxpy(seq_len * hidden, 1.0f, ctx->hidden_states, 1, ctx->temp_hidden, 1);
+#else
     for (int i = 0; i < seq_len * hidden; i++) {
         ctx->temp_hidden[i] += ctx->hidden_states[i];
     }
+#endif
     layer_norm(ctx->hidden_states, ctx->temp_hidden, layer->ffn_ln_weight, layer->ffn_ln_bias,
                seq_len, hidden);
 }
